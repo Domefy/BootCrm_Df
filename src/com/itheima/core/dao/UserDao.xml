@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.itheima.core.dao.UserDao">
+
+
+	<!-- private Integer user_id; //用户id
+	 private String user_code; //用户账号
+	  private String user_name; //用户名称
+	   private String user_password; //用户密码 
+	   private Integer user_state; //用户状态 -->
+
+
+	<!-- SELECT user_id, user_code, user_name, user_password, user_state
+	 FROM 
+		sys_user 
+	 WHERE user_name LIKE '%小韩%' LIMIT 0, 10 AND user_code='m0001' -->
+
+	<!--SQL片段 ,用refid重复利用 -->
+	<sql id="selectUserListWhere">
+		<where>
+			<if test="user_code != null">
+				user_code = #{user_code}
+			</if>
+			<if test="user_name != null">
+				and user_name like "%"#{user_name}"%"
+			</if>
+		</where>
+	</sql>
+
+	<!-- 查询用户列表 -->
+	<select id="selectUserList" parameterType="user" resultType="user">
+		SELECT
+			user_id,
+			user_code,
+			user_name,
+			user_password,
+			user_state
+		FROM
+			sys_user
+		<include refid="selectUserListWhere" />
+		<!-- 执行分页查询 -->
+		<if test="start !=null and rows != null">
+			limit #{start},#{rows}
+		</if>
+	</select>
+
+	<!-- 查询用户总数 -->
+	<select id="selectUserListCount" parameterType="user"
+		resultType="Integer">
+		select count(*) from sys_user
+		<include refid="selectUserListWhere" />
+	</select>
+
+
+	<!-- 注册查询最后一个用户 -->
+	<select id="findUserByFinal" parameterType="String" resultType="user">		
+		SELECT 
+		  * 
+		FROM
+		  sys_user 
+		ORDER BY user_id DESC 
+		LIMIT 1 
+	</select>
+	<!-- 注册用户 -->
+	<insert id="createUser" parameterType="user">
+		insert into sys_user(
+		user_code,user_name,user_password,user_state
+		)
+		values(
+		#{user_code},#{user_name},#{user_password},'1'
+		)
+	</insert>
+
+
+	<!-- 登录查询用户 -->
+	<select id="findUser" parameterType="String" resultType="user">
+		select *
+		from sys_user
+		where user_code = #{usercode}
+		and user_password =
+		#{password}
+		and user_state = '1'
+	</select>
+	<!-- 注册通过usercode查询用户 -->
+	<select id="findUserByUsercode" parameterType="String" resultType="user">
+		select *
+		from sys_user
+		where user_code = #{usercode}	
+		and user_state = '1'
+	</select>
+
+	<!-- 根据id获取用户信息 -->
+	<select id="getUserById" parameterType="Integer" resultType="user">
+	    select * from sys_user where user_id = #{id}
+	</select>
+	
+	<!-- user_id, user_code, user_name, user_password, user_state -->
+	<!-- 更新用户 -->
+	<update id="updateUser" parameterType="user">
+	    update sys_user
+	    <set>
+	        <if test="user_code!=null">
+	            user_code=#{user_code},
+	        </if>
+	        <if test="user_name!=null">
+	            user_name=#{user_name},
+	        </if>
+	        <if test="user_password!=null">
+	            user_password=#{user_password},
+	        </if>
+	        <if test="user_state!=null">
+	            user_state=#{user_state},
+	        </if>
+	      
+	    </set>
+	    where user_id=#{user_id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="Integer">
+	    delete from sys_user where user_id=#{id}
+	</delete>
+
+
+
+</mapper>
