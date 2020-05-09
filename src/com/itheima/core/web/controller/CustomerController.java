@@ -22,42 +22,42 @@ import com.itheima.core.service.BaseDictService;
 import com.itheima.core.service.CustomerService;
 
 /**
- * å®¢æˆ·ç®¡ç†æ§åˆ¶å™¨ç±»
+ * ¿Í»§¹ÜÀí¿ØÖÆÆ÷Àà
  */
 @Controller
 public class CustomerController {
-	// ä¾èµ–æ³¨å…¥
+	// ÒÀÀµ×¢Èë
 	@Autowired
 	private CustomerService customerService;
 	@Autowired
 	private BaseDictService baseDictService;
-	// å®¢æˆ·æ¥æº
+	// ¿Í»§À´Ô´
 	@Value("${customer.from.type}")
 	private String FROM_TYPE;
-	// å®¢æˆ·æ‰€å±è¡Œä¸š
+	// ¿Í»§ËùÊôĞĞÒµ
 	@Value("${customer.industry.type}")
 	private String INDUSTRY_TYPE;
-	// å®¢æˆ·çº§åˆ«
+	// ¿Í»§¼¶±ğ
 	@Value("${customer.level.type}")
 	private String LEVEL_TYPE;
 
 	/**
-	 * å®¢æˆ·åˆ—è¡¨
+	 * ¿Í»§ÁĞ±í
 	 */
 	@RequestMapping(value = "/customer/list.action")
 	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
 			String custName, String custSource, String custIndustry, String custLevel, Model model) {
-		// æ¡ä»¶æŸ¥è¯¢æ‰€æœ‰å®¢æˆ·
+		// Ìõ¼ş²éÑ¯ËùÓĞ¿Í»§
 		Page<Customer> customers = customerService.findCustomerList(page, rows, custName, custSource, custIndustry,
 				custLevel);
 		model.addAttribute("page", customers);
-		// å®¢æˆ·æ¥æº
+		// ¿Í»§À´Ô´
 		List<BaseDict> fromType = baseDictService.findBaseDictByTypeCode(FROM_TYPE);
-		// å®¢æˆ·æ‰€å±è¡Œä¸š
+		// ¿Í»§ËùÊôĞĞÒµ
 		List<BaseDict> industryType = baseDictService.findBaseDictByTypeCode(INDUSTRY_TYPE);
-		// å®¢æˆ·çº§åˆ«
+		// ¿Í»§¼¶±ğ
 		List<BaseDict> levelType = baseDictService.findBaseDictByTypeCode(LEVEL_TYPE);
-		// æ·»åŠ å‚æ•°
+		// Ìí¼Ó²ÎÊı
 		model.addAttribute("fromType", fromType);
 		model.addAttribute("industryType", industryType);
 		model.addAttribute("levelType", levelType);
@@ -69,21 +69,21 @@ public class CustomerController {
 	}
 
 	/**
-	 * åˆ›å»ºå®¢æˆ·
+	 * ´´½¨¿Í»§
 	 */
 	@RequestMapping("/customer/create.action")
 	@ResponseBody
 	public String customerCreate(Customer customer, HttpSession session) {
-		// è·å–Sessionä¸­çš„å½“å‰ç”¨æˆ·ä¿¡æ¯
+		// »ñÈ¡SessionÖĞµÄµ±Ç°ÓÃ»§ĞÅÏ¢
 		User user = (User) session.getAttribute("USER_SESSION");
-		// å°†å½“å‰ç”¨æˆ·idå­˜å‚¨åœ¨å®¢æˆ·å¯¹è±¡ä¸­
+		// ½«µ±Ç°ÓÃ»§id´æ´¢ÔÚ¿Í»§¶ÔÏóÖĞ
 		customer.setCust_create_id(user.getUser_id());
-		// åˆ›å»ºDateå¯¹è±¡
+		// ´´½¨Date¶ÔÏó
 		Date date = new Date();
-		// å¾—åˆ°ä¸€ä¸ªTimestampæ ¼å¼çš„æ—¶é—´ï¼Œå­˜å…¥mysqlä¸­çš„æ—¶é—´æ ¼å¼â€œyyyy/MM/dd HH:mm:ssâ€
+		// µÃµ½Ò»¸öTimestamp¸ñÊ½µÄÊ±¼ä£¬´æÈëmysqlÖĞµÄÊ±¼ä¸ñÊ½¡°yyyy/MM/dd HH:mm:ss¡±
 		Timestamp timeStamp = new Timestamp(date.getTime());
 		customer.setCust_createtime(timeStamp);
-		// æ‰§è¡ŒServiceå±‚ä¸­çš„åˆ›å»ºæ–¹æ³•ï¼Œè¿”å›çš„æ˜¯å—å½±å“çš„è¡Œæ•°
+		// Ö´ĞĞService²ãÖĞµÄ´´½¨·½·¨£¬·µ»ØµÄÊÇÊÜÓ°ÏìµÄĞĞÊı
 		int rows = customerService.createCustomer(customer);
 		if (rows > 0)
 			return "OK";
@@ -92,7 +92,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * é€šè¿‡idè·å–å®¢æˆ·ä¿¡æ¯
+	 * Í¨¹ıid»ñÈ¡¿Í»§ĞÅÏ¢
 	 */
 	@RequestMapping("/customer/getCustomerById.action")
 	@ResponseBody
@@ -102,7 +102,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * æ›´æ–°å®¢æˆ·
+	 * ¸üĞÂ¿Í»§
 	 */
 	@RequestMapping("/customer/update.action")
 	@ResponseBody
@@ -115,7 +115,7 @@ public class CustomerController {
 	}
 
 	/**
-	 * åˆ é™¤å®¢æˆ·
+	 * É¾³ı¿Í»§
 	 */
 	@RequestMapping("/customer/delete.action")
 	@ResponseBody

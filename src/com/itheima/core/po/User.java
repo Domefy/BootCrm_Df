@@ -3,18 +3,18 @@ package com.itheima.core.po;
 import java.io.Serializable;
 
 /**
- * ç”¨æˆ·æŒä¹…åŒ–ç±»
+ * ÓÃ»§³Ö¾Ã»¯Àà
  */
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Integer user_id; // ç”¨æˆ·id
-	private String user_code; // ç”¨æˆ·è´¦å·
-	private String user_name; // ç”¨æˆ·åç§°
-	private String user_password; // ç”¨æˆ·å¯†ç 
-	private Integer user_state; // ç”¨æˆ·çŠ¶æ€
+	private Integer user_id; // ÓÃ»§id
+	private String user_code; // ÓÃ»§ÕËºÅ
+	private String user_name; // ÓÃ»§Ãû³Æ
+	private String user_password; // ÓÃ»§ÃÜÂë
+	private Integer user_state; // ÓÃ»§×´Ì¬
 
-	private Integer start; // èµ·å§‹è¡Œ
-	private Integer rows; // æ‰€å–è¡Œæ•°
+	private Integer start; // ÆğÊ¼ĞĞ
+	private Integer rows; // ËùÈ¡ĞĞÊı
 
 	public Integer getStart() {
 		return start;

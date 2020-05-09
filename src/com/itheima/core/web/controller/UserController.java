@@ -15,35 +15,35 @@ import com.itheima.core.po.User;
 import com.itheima.core.service.UserService;
 
 /**
- * ç”¨æˆ·æ§åˆ¶å™¨ç±»
+ * ÓÃ»§¿ØÖÆÆ÷Àà
  */
 @Controller
 public class UserController {
-	// ä¾èµ–æ³¨å…¥
+	// ÒÀÀµ×¢Èë
 	@Autowired
 	private UserService userService;
 
 	/**
-	 * ç”¨æˆ·ç™»å½•
+	 * ÓÃ»§µÇÂ¼
 	 */
 	@RequestMapping(value = "/login.action", method = RequestMethod.POST)
 	public String login(String usercode, String password, Model model, HttpSession session) {
-		// é€šè¿‡è´¦å·å’Œå¯†ç æŸ¥è¯¢ç”¨æˆ·
+		// Í¨¹ıÕËºÅºÍÃÜÂë²éÑ¯ÓÃ»§
 		User user = userService.findUser(usercode, password);
 		if (user != null) {
-			// å°†ç”¨æˆ·å¯¹è±¡æ·»åŠ åˆ°Session
+			// ½«ÓÃ»§¶ÔÏóÌí¼Óµ½Session
 			session.setAttribute("USER_SESSION", user);
-			// è·³è½¬åˆ°ä¸»é¡µé¢
+			// Ìø×ªµ½Ö÷Ò³Ãæ
 			/* return "customer"; */
-			return "redirect:customer/list.action";// è®©é¡µé¢ä¸€è¿›æ¥å°±å…ˆæŸ¥è¯¢çš„é¡µé¢
+			return "redirect:customer/list.action";// ÈÃÒ³ÃæÒ»½øÀ´¾ÍÏÈ²éÑ¯µÄÒ³Ãæ
 		}
-		model.addAttribute("msg", "è´¦å·æˆ–å¯†ç é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
-		// è¿”å›åˆ°ç™»å½•é¡µé¢
+		model.addAttribute("msg", "ÕËºÅ»òÃÜÂë´íÎó£¬ÇëÖØĞÂÊäÈë£¡");
+		// ·µ»Øµ½µÇÂ¼Ò³Ãæ
 		return "login";
 	}
 
 	/**
-	 * å‘ç”¨æˆ·ç™»é™†é¡µé¢è·³è½¬
+	 * ÏòÓÃ»§µÇÂ½Ò³ÃæÌø×ª
 	 */
 
 	@RequestMapping(value = "/login.action", method = RequestMethod.GET)
@@ -52,26 +52,26 @@ public class UserController {
 	}
 
 	/**
-	 * æ³¨å†Œ,åˆ›å»ºç”¨æˆ·
+	 * ×¢²á,´´½¨ÓÃ»§
 	 */
 	@RequestMapping("/register/create.action")
 	@ResponseBody
 	public String userRegister(User user, HttpSession session) {
 
 		int rows = 0;
-		// æ ¹æ®usercodeæŸ¥è¯¢ç”¨æˆ·
+		// ¸ù¾İusercode²éÑ¯ÓÃ»§
 		User finduser = userService.findUserByUsercode(user.getUser_code());
-		if (finduser == null) {// ä¸å­˜åœ¨è©²ç”¨æˆ¶ï¼Œå¯ä»¥è¨»å†Šè©²ç”¨æˆ¶
-			// è·å–æœ€åä¸€ä¸ªç”¨æˆ·
+		if (finduser == null) {// ²»´æÔÚÔ“ÓÃ‘ô£¬¿ÉÒÔÔ]ƒÔÔ“ÓÃ‘ô
+			// »ñÈ¡×îºóÒ»¸öÓÃ»§
 			User suser = userService.findUserByFinal();
-			// å°†æœ€åä¸€ä¸ªç”¨æˆ·idå­˜å‚¨åœ¨ç”¨æˆ·å¯¹è±¡ä¸­
+			// ½«×îºóÒ»¸öÓÃ»§id´æ´¢ÔÚÓÃ»§¶ÔÏóÖĞ
 			user.setUser_id(suser.getUser_id());
 
-			// æ‰§è¡ŒServiceå±‚ä¸­çš„åˆ›å»ºæ–¹æ³•ï¼Œè¿”å›çš„æ˜¯å—å½±å“çš„è¡Œæ•°
-			rows = userService.createUser(user);// è¨»å†Šè©²ç”¨æˆ¶
+			// Ö´ĞĞService²ãÖĞµÄ´´½¨·½·¨£¬·µ»ØµÄÊÇÊÜÓ°ÏìµÄĞĞÊı
+			rows = userService.createUser(user);// Ô]ƒÔÔ“ÓÃ‘ô
 		}
 
-		if (rows > 0)// è¨»å†Šç”¨æˆ¶æˆåŠŸ
+		if (rows > 0)// Ô]ƒÔÓÃ‘ô³É¹¦
 			return "OK";
 		else
 			return "Fail";
@@ -79,7 +79,7 @@ public class UserController {
 	}
 
 	/**
-	 * åˆ›å»ºç”¨æˆ·
+	 * ´´½¨ÓÃ»§
 	 */
 	@RequestMapping("/user/create.action")
 	@ResponseBody
@@ -88,17 +88,17 @@ public class UserController {
 		int rows = 0;
 
 		User finduser = userService.findUserByUsercode(user.getUser_code());
-		if (finduser == null) {// ä¸å­˜åœ¨è©²ç”¨æˆ¶ï¼Œå¯ä»¥è¨»å†Šè©²ç”¨æˆ¶
-			// è·å–Sessionä¸­çš„å½“å‰ç”¨æˆ·ä¿¡æ¯
+		if (finduser == null) {// ²»´æÔÚÔ“ÓÃ‘ô£¬¿ÉÒÔÔ]ƒÔÔ“ÓÃ‘ô
+			// »ñÈ¡SessionÖĞµÄµ±Ç°ÓÃ»§ĞÅÏ¢
 			User suser = (User) session.getAttribute("USER_SESSION");
-			// å°†å½“å‰ç”¨æˆ·idå­˜å‚¨åœ¨ç”¨æˆ·å¯¹è±¡ä¸­
+			// ½«µ±Ç°ÓÃ»§id´æ´¢ÔÚÓÃ»§¶ÔÏóÖĞ
 			user.setUser_id(suser.getUser_id());
 
-			// æ‰§è¡ŒServiceå±‚ä¸­çš„åˆ›å»ºæ–¹æ³•ï¼Œè¿”å›çš„æ˜¯å—å½±å“çš„è¡Œæ•°
-			rows = userService.createUser(user);// è¨»å†Šè©²ç”¨æˆ¶
+			// Ö´ĞĞService²ãÖĞµÄ´´½¨·½·¨£¬·µ»ØµÄÊÇÊÜÓ°ÏìµÄĞĞÊı
+			rows = userService.createUser(user);// Ô]ƒÔÔ“ÓÃ‘ô
 		}
 
-		if (rows > 0)// è¨»å†Šç”¨æˆ¶æˆåŠŸ
+		if (rows > 0)// Ô]ƒÔÓÃ‘ô³É¹¦
 			return "OK";
 		else
 			return "Fail";
@@ -106,7 +106,7 @@ public class UserController {
 	}
 
 	/**
-	 * æ¨¡æ‹Ÿå…¶ä»–ç±»ä¸­è·³è½¬åˆ°å®¢æˆ·ç®¡ç†é¡µé¢çš„æ–¹æ³•
+	 * Ä£ÄâÆäËûÀàÖĞÌø×ªµ½¿Í»§¹ÜÀíÒ³ÃæµÄ·½·¨
 	 */
 
 	@RequestMapping(value = "/toCustomer.action")
@@ -115,28 +115,28 @@ public class UserController {
 	}
 
 	/**
-	 * é€€å‡ºç™»å½•
+	 * ÍË³öµÇÂ¼
 	 */
 
 	@RequestMapping(value = "/logout.action")
 	public String logout(HttpSession session) {
-		// æ¸…é™¤Session
+		// Çå³ıSession
 		session.invalidate();
-		// é‡å®šå‘åˆ°ç™»å½•é¡µé¢çš„è·³è½¬æ–¹æ³•
+		// ÖØ¶¨Ïòµ½µÇÂ¼Ò³ÃæµÄÌø×ª·½·¨
 		return "redirect:login.action";
 	}
 
 	/**
-	 * ç”¨æˆ·åˆ—è¡¨
+	 * ÓÃ»§ÁĞ±í
 	 */
 	@RequestMapping(value = "/toUser/list.action")
 	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
 			String userName, String userCode, Model model) {
-		// æ¡ä»¶æŸ¥è¯¢æ‰€æœ‰å®¢æˆ·
+		// Ìõ¼ş²éÑ¯ËùÓĞ¿Í»§
 		Page<User> users = userService.findUserList(page, rows, userName, userCode);
 		model.addAttribute("page", users);
 
-		// æ·»åŠ å‚æ•°
+		// Ìí¼Ó²ÎÊı
 		model.addAttribute("userCode", userCode);
 		model.addAttribute("userName", userName);
 
@@ -144,7 +144,7 @@ public class UserController {
 	}
 
 	/**
-	 * é€šè¿‡idè·å–ç”¨æˆ·ä¿¡æ¯
+	 * Í¨¹ıid»ñÈ¡ÓÃ»§ĞÅÏ¢
 	 */
 	@RequestMapping("/user/getUserById.action")
 	@ResponseBody
@@ -155,7 +155,7 @@ public class UserController {
 	}
 
 	/**
-	 * æ›´æ–°ç”¨æˆ·
+	 * ¸üĞÂÓÃ»§
 	 */
 	@RequestMapping("/user/update.action")
 	@ResponseBody
@@ -168,7 +168,7 @@ public class UserController {
 	}
 
 	/**
-	 * åˆ é™¤ç”¨æˆ·
+	 * É¾³ıÓÃ»§
 	 */
 	@RequestMapping("/user/delete.action")
 	@ResponseBody

@@ -13,45 +13,45 @@ import com.itheima.core.po.Customer;
 import com.itheima.core.service.CustomerService;
 
 /**
- * å®¢æˆ·ç®¡ç†
+ * ¿Í»§¹ÜÀí
  */
 @Service("customerService")
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
-	// å£°æ˜DAOå±æ€§å¹¶æ³¨å…¥
+	// ÉùÃ÷DAOÊôĞÔ²¢×¢Èë
 	@Autowired
 	private CustomerDao customerDao;
 
-	// å®¢æˆ·åˆ—è¡¨
+	// ¿Í»§ÁĞ±í
 	public Page<Customer> findCustomerList(Integer page, Integer rows, String custName, String custSource,
 			String custIndustry, String custLevel) {
-		// åˆ›å»ºå®¢æˆ·å¯¹è±¡
+		// ´´½¨¿Í»§¶ÔÏó
 		Customer customer = new Customer();
-		// åˆ¤æ–­å®¢æˆ·åç§°
+		// ÅĞ¶Ï¿Í»§Ãû³Æ
 		if (StringUtils.isNotBlank(custName))
 			customer.setCust_name(custName);
 
-		// åˆ¤æ–­å®¢æˆ·ä¿¡æ¯æ¥æº
+		// ÅĞ¶Ï¿Í»§ĞÅÏ¢À´Ô´
 		if (StringUtils.isNotBlank(custSource))
 			customer.setCust_source(custSource);
 
-		// åˆ¤æ–­å®¢æˆ·æ‰€å±è¡Œä¸š
+		// ÅĞ¶Ï¿Í»§ËùÊôĞĞÒµ
 		if (StringUtils.isNotBlank(custIndustry))
 			customer.setCust_industry(custIndustry);
 
-		// åˆ¤æ–­å®¢æˆ·çº§åˆ«
+		// ÅĞ¶Ï¿Í»§¼¶±ğ
 		if (StringUtils.isNotBlank(custLevel))
 			customer.setCust_level(custLevel);
 
-		// å½“å‰é¡µ
+		// µ±Ç°Ò³
 		customer.setStart((page - 1) * rows);
-		// æ¯é¡µæ•°
+		// Ã¿Ò³Êı
 		customer.setRows(rows);
-		// æŸ¥è¯¢å®¢æˆ·åˆ—è¡¨
+		// ²éÑ¯¿Í»§ÁĞ±í
 		List<Customer> customers = customerDao.selectCustomerList(customer);
-		// æŸ¥è¯¢å®¢æˆ·åˆ—è¡¨æ€»è®°å½•æ•°
+		// ²éÑ¯¿Í»§ÁĞ±í×Ü¼ÇÂ¼Êı
 		Integer count = customerDao.selectCustomerListCount(customer);
-		// åˆ›å»ºPageè¿”å›å¯¹è±¡
+		// ´´½¨Page·µ»Ø¶ÔÏó
 		Page<Customer> result = new Page<>();
 		result.setPage(page);
 		result.setRows(customers);
@@ -61,7 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	/**
-	 * åˆ›å»ºå®¢æˆ·
+	 * ´´½¨¿Í»§
 	 */
 	@Override
 	public int createCustomer(Customer customer) {
@@ -69,7 +69,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	/**
-	 * é€šè¿‡idæŸ¥è¯¢å®¢æˆ·
+	 * Í¨¹ıid²éÑ¯¿Í»§
 	 */
 	@Override
 	public Customer getCustomerById(Integer id) {
@@ -78,7 +78,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	/**
-	 * æ›´æ–°å®¢æˆ·
+	 * ¸üĞÂ¿Í»§
 	 */
 	@Override
 	public int updateCustomer(Customer customer) {
@@ -86,7 +86,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	/**
-	 * åˆ é™¤å®¢æˆ·
+	 * É¾³ı¿Í»§
 	 */
 	@Override
 	public int deleteCustomer(Integer id) {

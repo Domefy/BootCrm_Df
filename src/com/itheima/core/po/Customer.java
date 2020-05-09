@@ -4,25 +4,25 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * å®¢æˆ·æŒä¹…åŒ–ç±»
+ * ¿Í»§³Ö¾Ã»¯Àà
  */
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Integer cust_id; // å®¢æˆ·ç¼–å·
-	private String cust_name; // å®¢æˆ·åç§°
-	private Integer cust_user_id; // è´Ÿè´£äººid
-	private Integer cust_create_id; // åˆ›å»ºäººid
-	private String cust_source; // å®¢æˆ·ä¿¡æ¯æ¥æº
-	private String cust_industry; // å®¢æˆ·æ‰€å±è¡Œä¸š
-	private String cust_level; // å®¢æˆ·çº§åˆ«
-	private String cust_linkman; // è”ç³»äºº
-	private String cust_phone; // å›ºå®šç”µè¯
-	private String cust_mobile; // ç§»åŠ¨ç”µè¯
-	private String cust_zipcode; // é‚®æ”¿ç¼–ç 
-	private String cust_address; // è”ç³»åœ°å€
-	private Date cust_createtime; // åˆ›å»ºæ—¶é—´
-	private Integer start; // èµ·å§‹è¡Œ
-	private Integer rows; // æ‰€å–è¡Œæ•°
+	private Integer cust_id; // ¿Í»§±àºÅ
+	private String cust_name; // ¿Í»§Ãû³Æ
+	private Integer cust_user_id; // ¸ºÔğÈËid
+	private Integer cust_create_id; // ´´½¨ÈËid
+	private String cust_source; // ¿Í»§ĞÅÏ¢À´Ô´
+	private String cust_industry; // ¿Í»§ËùÊôĞĞÒµ
+	private String cust_level; // ¿Í»§¼¶±ğ
+	private String cust_linkman; // ÁªÏµÈË
+	private String cust_phone; // ¹Ì¶¨µç»°
+	private String cust_mobile; // ÒÆ¶¯µç»°
+	private String cust_zipcode; // ÓÊÕş±àÂë
+	private String cust_address; // ÁªÏµµØÖ·
+	private Date cust_createtime; // ´´½¨Ê±¼ä
+	private Integer start; // ÆğÊ¼ĞĞ
+	private Integer rows; // ËùÈ¡ĞĞÊı
 
 	public String getCust_zipcode() {
 		return cust_zipcode;

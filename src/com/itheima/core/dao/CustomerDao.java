@@ -5,25 +5,25 @@ import java.util.List;
 import com.itheima.core.po.Customer;
 
 /**
- * Customeræ¥å£
+ * Customer½Ó¿Ú
  */
 public interface CustomerDao {
-	// å®¢æˆ·åˆ—è¡¨
+	// ¿Í»§ÁĞ±í
 	public List<Customer> selectCustomerList(Customer customer);
 
-	// å®¢æˆ·æ•°
+	// ¿Í»§Êı
 	public Integer selectCustomerListCount(Customer customer);
 
-	// åˆ›å»ºå®¢æˆ·
+	// ´´½¨¿Í»§
 	public int createCustomer(Customer customer);
 
-	// é€šè¿‡idæŸ¥è¯¢å®¢æˆ·
+	// Í¨¹ıid²éÑ¯¿Í»§
 	public Customer getCustomerById(Integer id);
 
-	// æ›´æ–°å®¢æˆ·ä¿¡æ¯
+	// ¸üĞÂ¿Í»§ĞÅÏ¢
 	public int updateCustomer(Customer customer);
 
-	// åˆ é™¤å®¢æˆ·
+	// É¾³ı¿Í»§
 	public int deleteCustomer(Integer id);
 
 }

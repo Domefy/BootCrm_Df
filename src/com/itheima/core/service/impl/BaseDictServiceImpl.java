@@ -10,14 +10,14 @@ import com.itheima.core.po.BaseDict;
 import com.itheima.core.service.BaseDictService;
 
 /**
- * æ•°æ®å­—å…¸Serviceæ¥å£å®ç°ç±»
+ * Êı¾İ×ÖµäService½Ó¿ÚÊµÏÖÀà
  */
 @Service("baseDictService")
 public class BaseDictServiceImpl implements BaseDictService {
 	@Autowired
 	private BaseDictDao baseDictDao;
 
-	// æ ¹æ®ç±»åˆ«ä»£ç æŸ¥è¯¢æ•°æ®å­—å…¸
+	// ¸ù¾İÀà±ğ´úÂë²éÑ¯Êı¾İ×Öµä
 	public List<BaseDict> findBaseDictByTypeCode(String typecode) {
 		return baseDictDao.selectBaseDictByTypeCode(typecode);
 	}

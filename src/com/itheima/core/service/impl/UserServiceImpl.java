@@ -13,30 +13,30 @@ import com.itheima.core.po.User;
 import com.itheima.core.service.UserService;
 
 /**
- * ç”¨æˆ·Serviceæ¥å£å®ç°ç±»
+ * ÓÃ»§Service½Ó¿ÚÊµÏÖÀà
  */
 @Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService {
-	// æ³¨å…¥UserDao
+	// ×¢ÈëUserDao
 	@Autowired
 	private UserDao userDao;
 
-	// é€šè¿‡è´¦å·å’Œå¯†ç æŸ¥è¯¢ç”¨æˆ·ï¼Œç™»å½•
+	// Í¨¹ıÕËºÅºÍÃÜÂë²éÑ¯ÓÃ»§£¬µÇÂ¼
 	@Override
 	public User findUser(String usercode, String password) {
 		User user = this.userDao.findUser(usercode, password);
 		return user;
 	}
 
-	// é€šè¿‡è´¦å·æŸ¥è¯¢ç”¨æˆ·ï¼Œæ³¨å†Œ
+	// Í¨¹ıÕËºÅ²éÑ¯ÓÃ»§£¬×¢²á
 	@Override
 	public User findUserByUsercode(String usercode) {
 		User user = this.userDao.findUserByUsercode(usercode);
 		return user;
 	}
 
-	// æŸ¥æ‰¾ç”¨æˆ·è¡¨æœ€åä¸€æ¡æ•°æ®
+	// ²éÕÒÓÃ»§±í×îºóÒ»ÌõÊı¾İ
 	@Override
 	public User findUserByFinal() {
 		User user = this.userDao.findUserByFinal();
@@ -44,36 +44,36 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
-	 * æ³¨å†Œç”¨æˆ·
+	 * ×¢²áÓÃ»§
 	 */
 	@Override
 	public int createUser(User user) {
 		return userDao.createUser(user);
 	}
 
-	// æŸ¥æ‰¾ç”¨æˆ·åˆ—è¡¨
+	// ²éÕÒÓÃ»§ÁĞ±í
 	@Override
 	public Page<User> findUserList(Integer page, Integer rows, String userName, String userCode) {
 		// TODO Auto-generated method stub
-		// åˆ›å»ºç”¨æˆ·å¯¹è±¡
+		// ´´½¨ÓÃ»§¶ÔÏó
 		User user = new User();
-		// åˆ¤æ–­ç”¨æˆ·åç§°
+		// ÅĞ¶ÏÓÃ»§Ãû³Æ
 		if (StringUtils.isNotBlank(userName))
 			user.setUser_name(userName);
 
-		// åˆ¤æ–­ç”¨æˆ·è´¦å·
+		// ÅĞ¶ÏÓÃ»§ÕËºÅ
 		if (StringUtils.isNotBlank(userCode))
 			user.setUser_code(userCode);
 
-		// å½“å‰é¡µ
+		// µ±Ç°Ò³
 		user.setStart((page - 1) * rows);
-		// æ¯é¡µæ•°
+		// Ã¿Ò³Êı
 		user.setRows(rows);
-		// æŸ¥è¯¢ç”¨æˆ·åˆ—è¡¨
+		// ²éÑ¯ÓÃ»§ÁĞ±í
 		List<User> users = userDao.selectUserList(user);
-		// æŸ¥è¯¢ç”¨æˆ·åˆ—è¡¨æ€»è®°å½•æ•°
+		// ²éÑ¯ÓÃ»§ÁĞ±í×Ü¼ÇÂ¼Êı
 		Integer count = userDao.selectUserListCount(user);
-		// åˆ›å»ºPageè¿”å›å¯¹è±¡
+		// ´´½¨Page·µ»Ø¶ÔÏó
 		Page<User> result = new Page<>();
 		result.setPage(page);
 		result.setRows(users);
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
-	 * é€šè¿‡idæŸ¥è¯¢ç”¨æˆ·
+	 * Í¨¹ıid²éÑ¯ÓÃ»§
 	 */
 	@Override
 	public User getUserById(Integer id) {
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
-	 * æ›´æ–°ç”¨æˆ·
+	 * ¸üĞÂÓÃ»§
 	 */
 	@Override
 	public int updateUser(User user) {
@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
-	 * åˆ é™¤ç”¨æˆ·
+	 * É¾³ıÓÃ»§
 	 */
 	@Override
 	public int deleteUser(Integer id) {

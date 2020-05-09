@@ -3,18 +3,18 @@ package com.itheima.core.po;
 import java.io.Serializable;
 
 /**
- * 鏁版嵁瀛楀吀鎸佷箙鍖栫被
+ * 数据字典持久化类
  */
 public class BaseDict implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String dict_id; // 鏁版嵁瀛楀吀id
-	private String dict_type_code; // 鏁版嵁瀛楀吀绫诲埆浠ｇ爜
-	private String dict_type_name; // 鏁版嵁瀛楀吀绫诲埆鍚嶇О
-	private String dict_item_name; // 鏁版嵁瀛楀吀椤圭洰鍚嶇О
-	private String dict_item_code; // 鏁版嵁瀛楀吀椤圭洰浠ｇ爜
-	private Integer dict_sort; // 鎺掑簭瀛楁
-	private String dict_enable; // 鏄惁鍙敤
-	private String dict_memo; // 澶囨敞
+	private String dict_id; // 数据字典id
+	private String dict_type_code; // 数据字典类别代码
+	private String dict_type_name; // 数据字典类别名称
+	private String dict_item_name; // 数据字典项目名称
+	private String dict_item_code; // 数据字典项目代码
+	private Integer dict_sort; // 排序字段
+	private String dict_enable; // 是否可用
+	private String dict_memo; // 备注
 
 	public String getDict_id() {
 		return dict_id;

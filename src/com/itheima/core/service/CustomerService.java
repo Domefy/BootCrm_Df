@@ -4,20 +4,20 @@ import com.itheima.common.utils.Page;
 import com.itheima.core.po.Customer;
 
 public interface CustomerService {
-	// 鏌ヨ瀹㈡埛鍒楄〃
+	// 查询客户列表
 	public Page<Customer> findCustomerList(Integer page, Integer rows, String custName, String custSource,
 			String custIndustry, String custLevel);
 
-	// 鍒涘缓瀹㈡埛
+	// 创建客户
 	public int createCustomer(Customer customer);
 
-	// 閫氳繃id鏌ヨ瀹㈡埛
+	// 通过id查询客户
 	public Customer getCustomerById(Integer id);
 
-	// 鏇存柊瀹㈡埛
+	// 更新客户
 	public int updateCustomer(Customer customer);
 
-	// 鍒犻櫎瀹㈡埛
+	// 删除客户
 	public int deleteCustomer(Integer id);
 
 }

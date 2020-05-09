@@ -7,41 +7,41 @@ import org.apache.ibatis.annotations.Param;
 import com.itheima.core.po.User;
 
 /**
- * ç”¨æˆ·DAOå±‚æ¥å£
+ * ÓÃ»§DAO²ã½Ó¿Ú
  */
 public interface UserDao {
 
 	/**
-	 * é€šè¿‡è´¦å·å’Œå¯†ç æŸ¥è¯¢ç”¨æˆ·ï¼Œç™»å½•
+	 * Í¨¹ıÕËºÅºÍÃÜÂë²éÑ¯ÓÃ»§£¬µÇÂ¼
 	 */
 	public User findUser(@Param("usercode") String usercode, @Param("password") String password);
 
 	/**
-	 * é€šè¿‡è´¦å·æŸ¥è¯¢ç”¨æˆ·ï¼Œæ³¨å†Œ
+	 * Í¨¹ıÕËºÅ²éÑ¯ÓÃ»§£¬×¢²á
 	 */
 	public User findUserByUsercode(@Param("usercode") String usercode);
 
 	/**
-	 * æŸ¥è¯¢æœ€åä¸€æ¡æ•°æ®ï¼Œè·å–ä¸»é”®ï¼Œç”¨äºæ³¨å†Œ
+	 * ²éÑ¯×îºóÒ»ÌõÊı¾İ£¬»ñÈ¡Ö÷¼ü£¬ÓÃÓÚ×¢²á
 	 */
 	public User findUserByFinal();
 
-	// æ³¨å†Œ,æ³¨å†Œç”¨æˆ·
+	// ×¢²á,×¢²áÓÃ»§
 	public int createUser(User user);
 
-	// ç”¨æˆ·åˆ—è¡¨
+	// ÓÃ»§ÁĞ±í
 	public List<User> selectUserList(User user);
 
-	// ç”¨æˆ·æ•°
+	// ÓÃ»§Êı
 	public Integer selectUserListCount(User user);
 
-	// é€šè¿‡idæŸ¥è¯¢ç”¨æˆ·
+	// Í¨¹ıid²éÑ¯ÓÃ»§
 	public User getUserById(Integer id);
 
-	// æ›´æ–°ç”¨æˆ·ä¿¡æ¯
+	// ¸üĞÂÓÃ»§ĞÅÏ¢
 	public int updateUser(User user);
 
-	// åˆ é™¤å®¢æˆ·ç”¨æˆ·
+	// É¾³ı¿Í»§ÓÃ»§
 	public int deleteUser(Integer id);
 
 }

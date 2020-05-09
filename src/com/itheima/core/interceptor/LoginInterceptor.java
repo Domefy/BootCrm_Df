@@ -10,28 +10,28 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itheima.core.po.User;
 
 /**
- * ç™»å½•æ‹¦æˆªå™¨
+ * µÇÂ¼À¹½ØÆ÷
  */
 public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// è·å–è¯·æ±‚çš„URL
+		// »ñÈ¡ÇëÇóµÄURL
 		String url = request.getRequestURI();
-		// URL:é™¤äº†ç™»å½•å’Œæ³¨å†Œè¯·æ±‚å¤–ï¼Œå…¶ä»–çš„URLéƒ½è¿›è¡Œæ‹¦æˆªæ§åˆ¶
+		// URL:³ıÁËµÇÂ¼ºÍ×¢²áÇëÇóÍâ£¬ÆäËûµÄURL¶¼½øĞĞÀ¹½Ø¿ØÖÆ
 		if (url.indexOf("/login.action") >= 0 || url.indexOf("/login.action#") >= 0
 				|| url.indexOf("/register/create.action") >= 0)
 			return true;
 
-		// è·å–Session
+		// »ñÈ¡Session
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("USER_SESSION");
-		// åˆ¤æ–­Sessionä¸­æ˜¯å¦æœ‰ç”¨æˆ·æ•°æ®ï¼Œå¦‚æœæœ‰ï¼Œåˆ™è¿”å›trueç»§ç»­å‘ä¸‹æ‰§è¡Œ
+		// ÅĞ¶ÏSessionÖĞÊÇ·ñÓĞÓÃ»§Êı¾İ£¬Èç¹ûÓĞ£¬Ôò·µ»Øtrue¼ÌĞøÏòÏÂÖ´ĞĞ
 		if (user != null)
 			return true;
 
-		// ä¸ç¬¦åˆæ¡ä»¶çš„ç»™å‡ºæç¤ºä¿¡æ¯ï¼Œå¹¶è½¬å‘åˆ°ç™»å½•é¡µé¢
-		request.setAttribute("msg", "æ‚¨è¿˜æ²¡æœ‰ç™»å½•ï¼Œè¯·å…ˆç™»å½•ï¼");
+		// ²»·ûºÏÌõ¼şµÄ¸ø³öÌáÊ¾ĞÅÏ¢£¬²¢×ª·¢µ½µÇÂ¼Ò³Ãæ
+		request.setAttribute("msg", "Äú»¹Ã»ÓĞµÇÂ¼£¬ÇëÏÈµÇÂ¼£¡");
 		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 		return false;
 	}

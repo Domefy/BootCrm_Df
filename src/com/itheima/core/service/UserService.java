@@ -4,31 +4,31 @@ import com.itheima.common.utils.Page;
 import com.itheima.core.po.User;
 
 /**
- * ç”¨æˆ·Serviceå±‚æ¥å£
+ * ÓÃ»§Service²ã½Ó¿Ú
  */
 public interface UserService {
 
-	// é€šè¿‡è´¦å·å’Œå¯†ç æŸ¥è¯¢ç”¨æˆ·,ç™»å½•ç”¨
+	// Í¨¹ıÕËºÅºÍÃÜÂë²éÑ¯ÓÃ»§,µÇÂ¼ÓÃ
 	public User findUser(String usercode, String password);
 
-	// é€šè¿‡è´¦å·æŸ¥è¯¢ç”¨æˆ·,æ³¨å†Œç”¨
+	// Í¨¹ıÕËºÅ²éÑ¯ÓÃ»§,×¢²áÓÃ
 	public User findUserByUsercode(String usercode);
 
-	// æŸ¥è¯¢æœ€åä¸€ä¸ªç”¨æˆ·,æ³¨å†Œç”¨
+	// ²éÑ¯×îºóÒ»¸öÓÃ»§,×¢²áÓÃ
 	public User findUserByFinal();
 
-	// æ³¨å†Œç”¨æˆ·
+	// ×¢²áÓÃ»§
 	public int createUser(User user);
 
-	// æŸ¥è¯¢ç”¨æˆ·åˆ—è¡¨
+	// ²éÑ¯ÓÃ»§ÁĞ±í
 	public Page<User> findUserList(Integer page, Integer rows, String userName, String userCode);
 
-	// é€šè¿‡idæŸ¥è¯¢ç”¨æˆ·
+	// Í¨¹ıid²éÑ¯ÓÃ»§
 	public User getUserById(Integer id);
 
-	// æ›´æ–°ç”¨æˆ·
+	// ¸üĞÂÓÃ»§
 	public int updateUser(User user);
 
-	// åˆ é™¤ç”¨æˆ·
+	// É¾³ıÓÃ»§
 	public int deleteUser(Integer id);
 }

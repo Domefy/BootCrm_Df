@@ -5,9 +5,9 @@ import java.util.List;
 import com.itheima.core.po.BaseDict;
 
 /**
- * 鏁版嵁瀛楀吀
+ * 数据字典
  */
 public interface BaseDictDao {
-	// 鏍规嵁绫诲埆浠ｇ爜鏌ヨ鏁版嵁瀛楀吀
+	// 根据类别代码查询数据字典
 	public List<BaseDict> selectBaseDictByTypeCode(String typecode);
 }
